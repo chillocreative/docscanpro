@@ -44,8 +44,10 @@ class AppConstants {
   /// Master switch for AdMob. When `false`, the SDK is never initialized,
   /// banners short-circuit to empty widgets, the export-counter
   /// interstitial is suppressed, and the "Ads Active" upsell banner on
-  /// My Documents is hidden. Flip back to `true` to re-enable ads.
-  static const bool kAdsEnabled = false;
+  /// My Documents is hidden. Now `true` because the production AdMob
+  /// IDs are wired up (see `AdIds`); set to `false` if you ever need to
+  /// kill ads without uninstalling the SDK.
+  static const bool kAdsEnabled = true;
 
   /// IAP product ID for the lifetime premium upgrade.
   ///

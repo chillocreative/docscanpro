@@ -39,10 +39,13 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <!-- AdMob app ID — TEST value. REPLACE for release. -->
+        <!-- AdMob app ID — production publisher
+             ca-app-pub-3464451429907034. Must match
+             AdIds.prodAppIdAndroid in lib/core/constants/ad_ids.dart;
+             the SDK will refuse to initialise if they diverge. -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-3464451429907034~4744178919" />
         <!-- Pre-download every ML Kit text recognition model the app
              can switch to. Without this, models download lazily on
              first use, which means a user's first OCR run on Japanese
