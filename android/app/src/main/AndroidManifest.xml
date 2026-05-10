@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" android:required="true" />
@@ -8,14 +9,23 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <!-- Storage: the app captures via the camera plugin and writes
-         exclusively to its own scoped directory (getExternalStorageDirectory),
-         so no MediaStore-scoped permission is needed on Android 13+.
-         The two legacy entries below cover Android <=32 / <=28 where
-         scoped storage didn't yet exist. -->
+         exclusively to its own app-specific directory through
+         path_provider's getExternalStorageDirectory()
+         (= Android's getExternalFilesDir()). That directory has not
+         required any storage permission since API 19 (KitKat), and our
+         minSdk is 24, so we declare zero storage permissions.
+
+         The two `tools:node="remove"` entries below strip permissions
+         that camera_android_camerax merges in defensively (and the
+         READ_EXTERNAL_STORAGE that the build system auto-implies from
+         WRITE_EXTERNAL_STORAGE). Without these removes, Play Console's
+         Photo & Video Permissions policy fires because Google treats
+         the legacy storage pair as broad photo/video access regardless
+         of any maxSdkVersion bound. -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
+        tools:node="remove" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+        tools:node="remove" />
 
     <application
         android:label="DocScan Pro"
