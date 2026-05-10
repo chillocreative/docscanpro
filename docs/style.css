@@ -1,0 +1,184 @@
+/* Shared style for the hosted DocScan Pro legal pages.
+   Designed for legibility on phones (Play Console reviewers usually
+   open these on an Android device) and for printability. */
+:root {
+  --brand: #2563EB;
+  --brand-dark: #1D4ED8;
+  --ink: #0F172A;
+  --body: #374151;
+  --muted: #6B7280;
+  --line: #E5E7EB;
+  --tint: #EFF6FF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: var(--body);
+  background: #fff;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 22px 56px;
+}
+
+header.brand {
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+header.brand .inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+header.brand .logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--brand);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+header.brand h1 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -0.2px;
+}
+
+header.brand h1 small {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+h1.page-title {
+  font-size: 28px;
+  color: var(--ink);
+  margin: 0 0 4px;
+  letter-spacing: -0.4px;
+}
+
+p.lead {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0 0 24px;
+}
+
+h2 {
+  font-size: 17px;
+  color: var(--ink);
+  margin-top: 28px;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+
+p,
+li {
+  font-size: 15px;
+  color: var(--body);
+}
+
+ul {
+  padding-left: 22px;
+}
+
+li {
+  margin-bottom: 4px;
+}
+
+a {
+  color: var(--brand-dark);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(29, 78, 216, 0.25);
+}
+
+a:hover {
+  border-bottom-color: var(--brand-dark);
+}
+
+.contact-card {
+  margin: 24px 0 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--tint);
+  border: 1px solid #BFDBFE;
+}
+
+.contact-card h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: var(--brand-dark);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.contact-card p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.contact-card a {
+  font-weight: 600;
+}
+
+footer.app-foot {
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+  padding-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: space-between;
+}
+
+footer.app-foot a {
+  color: var(--muted);
+  border-bottom-color: transparent;
+}
+
+footer.app-foot a:hover {
+  color: var(--brand-dark);
+  border-bottom-color: var(--brand-dark);
+}
+
+@media print {
+  header.brand,
+  footer.app-foot {
+    display: none;
+  }
+
+  main {
+    max-width: 100%;
+    padding: 0;
+  }
+}

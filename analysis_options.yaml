@@ -1,0 +1,15 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  errors:
+    # Strings are reviewed; we keep the rule helpful but not blocking for placeholder copy.
+    public_member_api_docs: ignore
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/generated_plugin_registrant.dart"
+
+linter:
+  rules:
+    public_member_api_docs: false
+    lines_longer_than_80_chars: false

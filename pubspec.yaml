@@ -1,0 +1,85 @@
+name: doc_scan_ar
+description: "DocScan AR - Android document scanner with AR-style edge detection."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.4
+
+dependencies:
+  # Camera + frame stream (M2)
+  camera: ^0.11.0+2
+  cupertino_icons: ^1.0.8
+  flutter:
+    sdk: flutter
+  # State + DI + nav (M1)
+  flutter_riverpod: ^2.6.1
+  go_router: ^14.6.2
+  # Pixel ops, perspective warp, filters (M3, M5)
+  # Note: spec asked us to try `opencv_dart` first. We did (1.4.5) and its
+  # CMake/NDK step failed on Windows (path contains a space, and opencv_dart's
+  # native build is brittle in that situation). Fell back to pure-Dart edge
+  # detection + perspective warp via the `image` package. Documented in
+  # README.md and KNOWN_ISSUES.md.
+  # On-device OCR (M9)
+  google_mlkit_text_recognition: ^0.15.0
+  # AdMob banners + interstitials (M10)
+  google_mobile_ads: ^5.3.1
+  image: ^4.5.4
+  # Google Play Billing (M11)
+  in_app_purchase: ^3.2.1
+  # Date formatting on the Library tile (M6)
+  intl: ^0.20.2
+  # File IO (M6, M8)
+  path: ^1.9.0
+  path_provider: ^2.1.5
+  # PDF generation (M8)
+  pdf: ^3.11.3
+  # Runtime permissions (M2)
+  permission_handler: ^11.3.1
+  # PDF preview + native print share sheet (M8)
+  printing: ^5.14.2
+  # Native share sheet for files (M8)
+  share_plus: ^11.0.0
+  # Persisted entitlement cache + theme mode (M11, M12)
+  shared_preferences: ^2.5.2
+  # Local DB (M6) — using `sqflite` instead of `isar` (both are spec-allowed)
+  # for build stability on Android: isar's native libs have had a steady
+  # stream of Android build issues; sqflite ships a single rock-solid
+  # native plugin.
+  sqflite: ^2.4.1
+  # External-URL launching (Play Store rate link, mailto: developer
+  # contact). Several transitive deps already pull pieces of the
+  # url_launcher platform interface, so adding the unified package is a
+  # cheap addition.
+  url_launcher: ^6.3.1
+
+dev_dependencies:
+  # Launcher icons / splash — wiring is in the README; a real PNG must be
+  # placed at `assets/icon/app_icon.png` before running these tools.
+  flutter_launcher_icons: ^0.14.4
+  flutter_lints: ^6.0.0
+  flutter_native_splash: ^2.4.6
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^7.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icon/
+
+# Launcher icon. Generated via System.Drawing in tools/gen_icon.ps1 to
+# match the splash _LogoCard widget (white rounded card on brand blue
+# with the scan-document glyph). Re-render the PNGs by running:
+#   .\tools\gen_icon.ps1
+# then regenerate the platform mipmaps with:
+#   dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: false
+  image_path: "assets/icon/app_icon.png"
+  min_sdk_android: 24
+  remove_alpha_ios: true
+  adaptive_icon_background: "#2563EB"
+  adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
