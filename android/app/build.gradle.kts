@@ -39,7 +39,10 @@ android {
     defaultConfig {
         applicationId = "com.docscanar.app"
         minSdk = 24
-        targetSdk = 34
+        // Play Console requires targetSdk >= 35 for new uploads as of
+        // August 2025. The original spec asked for 34 but Play's
+        // policy now overrides that.
+        targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         multiDexEnabled = true
